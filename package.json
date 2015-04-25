@@ -12,7 +12,7 @@
     "email": "internet.erik@gmail.com",
     "url": "https://github.com/internetErik"
   },
-  "main": "./index.js",
+  "main": "./index.coffee",
   "repository": {
     "type": "git",
     "url": "git://github.com/internetErik/gulp-htmlincluder.git"
@@ -23,7 +23,8 @@
   },
   "dependencies": {
     "through2": "*",
-    "gulp-util": "~2.2.0"
+    "gulp-util": "~2.2.0",
+    "coffee-script": "*"
   },
   "devDependencies": {
     "mocha": "*",

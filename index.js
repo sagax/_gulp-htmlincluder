@@ -11,7 +11,7 @@ module.exports = function (insertText) {
     includer.buildHtml(function(file) {
       var f = file.file;
       f.contents = new Buffer(file.content);
-        that.push(f);
+      that.push(f);
     });
   }
 
