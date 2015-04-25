@@ -1,26 +1,28 @@
-through = require('through2')
-gutil = require('gulp-util')
+through  = require('through2')
+gutil    = require('gulp-util')
 includer = require('./lib/htmlincluder')
 
 module.exports = (insertText) ->
   'use strict'
-  that = undefined
 
   htmlincluder = ->
+    self = this
     includer.buildHtml (file) ->
       f = file.file
       f.contents = new Buffer(file.content)
-      that.push f
+      self.push f
       return
     return
 
   aggregateFiles = (file, enc, callback) ->
-    that = this
     if file.isNull()
       @push file
       return callback()
     if file.isStream()
-      @emit 'error', new (gutil.PluginError)('gulp-htmlincluder', 'Stream content is not supported')
+      @emit 'error', new (gutil.PluginError)(
+        'gulp-htmlincluder',
+        'Stream content is not supported'
+      )
       return callback()
     if file.isBuffer()
       includer.hashFile file, insertText
