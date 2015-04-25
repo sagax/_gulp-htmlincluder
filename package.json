@@ -12,7 +12,7 @@
     "email": "internet.erik@gmail.com",
     "url": "https://github.com/internetErik"
   },
-  "main": "./index.coffee",
+  "main": "./index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/internetErik/gulp-htmlincluder.git"

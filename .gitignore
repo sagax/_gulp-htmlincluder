@@ -3,3 +3,4 @@ node_modules/
 temp/
 coverage
 tags
+npm-debug.log
