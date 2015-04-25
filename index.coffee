@@ -3,6 +3,8 @@ gutil = require('gulp-util')
 includer = require('./lib/htmlincluder')
 
 module.exports = (insertText) ->
+  'use strict'
+  that = undefined
 
   htmlincluder = ->
     includer.buildHtml (file) ->
@@ -24,7 +26,5 @@ module.exports = (insertText) ->
       includer.hashFile file, insertText
     callback()
 
-  'use strict'
-  that = undefined
   includer.initialize()
   through.obj aggregateFiles, htmlincluder
