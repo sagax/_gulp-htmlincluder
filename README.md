@@ -5,12 +5,11 @@
 
 ## Introduction
 
-htmlincluder allows you to break your html files into sepparate modules that can be tested on their own, and then built together.  
+htmlincluder allows you to break your html files into sepparate modules that can be tested on their own, and then built together.
 
 htmlincluder looks through your files for special html comments that it will use to parse them and do the insertions correctly.
 
 ## Usage
-
 
 ### Install
 ```shell
@@ -21,23 +20,21 @@ npm install --save-dev gulp-htmlincluder
 Then, add it to your `gulpfile.js`:
 
 ```javascript
-var gulp = require('gulp'),
-	includer = require('gulp-htmlincluder');
+var gulp = require('gulp');
+var includer = require('gulp-htmlincluder');
 
 gulp.task('htmlIncluder', function() {
-    gulp.src('files/*.html')
-    	.pipe(includer())
-        .pipe(gulp.dest('dist/'));
+  gulp.src('files/*.html')
+    .pipe(includer())
+    .pipe(gulp.dest('dist/'));
 });
-
 
 gulp.task('default', ['htmlIncluder']);
 
-
 gulp.task('watch', function() {
-    gulp.watch(['files/*.html'], function(event) {
-      gulp.start('default');
-    });
+  gulp.watch(['files/*.html'], function(event) {
+    gulp.start('default');
+  });
 });
 ```
 
@@ -68,7 +65,7 @@ This is the simplest use case.  Simply put the following html comment
   <title>Document</title>
 </head>
 <body>
-<!--#insert file="-file2.html" -->
+  <!--#insert file="-file2.html" -->
 </body>
 </html>
 ```
@@ -94,29 +91,27 @@ Results
 
 #### Configure insert to use other text
 
-If you want to use ssi includes along with this, and so have the insert string follow that format there is an arguemtn to pass into the htmlincluder in gulp. 
+If you want to use ssi includes along with this, and so have the insert string follow that format there is an arguemtn to pass into the htmlincluder in gulp.
 
 Thanks to theSLY for suggesting this!
 
 ```javascript
-var gulp = require('gulp'),
-  includer = require('gulp-htmlincluder');
+var gulp = require('gulp');
+var includer = require('gulp-htmlincluder');
 
 gulp.task('htmlIncluder', function() {
-    gulp.src('files/*.html')
-//now looks for &lt;!--#include virtual, instead of &lt;!--#insert  
-      .pipe(includer('include virtual')) 
-      .pipe(gulp.dest('dist/'));
+  gulp.src('files/*.html')
+  //now looks for &lt;!--#include virtual, instead of &lt;!--#insert
+  .pipe(includer('include virtual'))
+  .pipe(gulp.dest('dist/'));
 });
-
 
 gulp.task('default', ['htmlIncluder']);
 
-
 gulp.task('watch', function() {
-    gulp.watch(['files/*.html'], function(event) {
-      gulp.start('default');
-    });
+  gulp.watch(['files/*.html'], function(event) {
+    gulp.start('default');
+  });
 });
 ```
 
@@ -146,7 +141,7 @@ The middle tag must be placed in the wrap file so we know where to put the middl
   <title>Document</title>
 </head>
 <body>
-<!--#middle -->
+  <!--#middle -->
 </body>
 </html>
 ```
@@ -179,9 +174,9 @@ Results:
   <title>Document</title>
 </head>
 <body>
-<!--#clipbefore -->
-blah
-<!--#clipafter -->
+  <!--#clipbefore -->
+  blah
+  <!--#clipafter -->
 </body>
 </html>
 ```
@@ -205,11 +200,11 @@ blah
   <title>Document</title>
 </head>
 <body>
-something
-<!--#clipbetween -->
-a widget!
-<!--#endclipbetween -->
-something else
+  something
+  <!--#clipbetween -->
+  a widget!
+  <!--#endclipbetween -->
+  something else
 </body>
 </html>
 ```
@@ -223,8 +218,8 @@ Results:
   <title>Document</title>
 </head>
 <body>
-something
-something else
+  something
+  something else
 </body>
 </html>
 ```
